@@ -1,0 +1,22 @@
+__version__: 1
+solution_name: platform
+solution_version: 0.0.1
+docker_registry: dockerreg.cyanoptics.com
+apps:
+    haproxy:
+        image: cyan/haproxy:0.2.1-122
+        ports:
+            - "80:80"      # http
+            - "443:443"    # https
+        volumes:
+            - /dev/log:/dev/log
+    discod:
+        image: cyan/discod:0.1.8-172
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock
+        environment:
+            NOAUTH: true
+        pid: host
+        privileged: true
+    etcd:
+        image: cyan/etcd:2.0.3-5

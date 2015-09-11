@@ -1,0 +1,12 @@
+__version__: 1
+solution_name: example
+solution_version: 0.0.1
+apps:
+    bp2-service:
+        image: davidkbainbridge/bp2-service:build
+        ports:
+          - "8901:8901"
+        default_instances: 1
+    bp2-consumer:
+        image: davidkbainbridge/bp2-consumer:build
+        default_instances: 1
